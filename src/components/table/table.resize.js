@@ -8,7 +8,7 @@ export function resizeHandler($root, event) {
   let value = 0
   const sideProp = type === 'col' ? 'bottom' : 'right'
   const cells = $root
-      .findAll(`[data-namecol="${$parent.$el.innerText}"]`)
+      .findAll(`[data-col="${$parent.data.col}"]`)
 
   $resizer.css({
     opacity: 1,
