@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
@@ -30,7 +31,6 @@ module.exports = {
   context: path.resolve(__dirname, 'src'),
   mode: 'development',
   entry: [
-    'webpack-dev-server/client',
     path.resolve(__dirname, './src/index.js')],
   output: {
     filename: filename('js'),
@@ -46,7 +46,6 @@ module.exports = {
   devtool: isDev ? 'source-map' : false,
   devServer: {
     historyApiFallback: true,
-    contentBase: path.resolve(__dirname, './dist'),
     open: true,
     compress: true,
     hot: true,
@@ -70,6 +69,9 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: filename('css')
     }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+    })
   ],
   module: {
     rules: [
