@@ -12,9 +12,7 @@ export class ExcelComponent extends DomListener {
     this.prepare()
   }
 
-  prepare() {
-
-  }
+  prepare() {}
 
   toHTML() {
     return ''
@@ -24,9 +22,7 @@ export class ExcelComponent extends DomListener {
     this.emitter.emit(event, ...args)
   }
 
-  storeChanged() {
-
-  }
+  storeChanged() {}
 
   isWatching(key) {
     return this.subscribe.includes(key)
